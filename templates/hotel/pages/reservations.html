@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<!-- Page Content -->
+    <div class="content">
+        <div class="container">
+{% if messages  %}
+{% for msg in messages %}
+<div class="alert alert-success" role="alert">
+    <strong>Success!</strong>
+    <p>{{msg}}</p>
+</div>
+{% endfor %}
+{% endif %}
+
+            <div class="row">
+                <div class="col-md-7 col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                        
+                            <!-- Checkout Form -->
+                            <form method="post" >
+                            {% csrf_token %}
+                                <!-- Personal Information -->
+                                <div class="info-widget">
+                                    <h4 class="card-title">Personal Information</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group card-label">
+                                                <label>First Name</label>
+                                                <input class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group card-label">
+                                                <label>Last Name</label>
+                                                <input class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group card-label">
+                                                <label>Email</label>
+                                                <input class="form-control" type="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group card-label">
+                                                <label>Phone</label>
+                                                <input class="form-control" type="tel">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div>
+                                </div>
+                                <!-- /Personal Information -->
+                                
+                                <div class="payment-widget">
+                                    <h4 class="card-title">More details</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group card-label">
+                                                <label>Starting date</label>
+                                                <input class="form-control" type="date" name="start_date"  value="2022-07-22"
+                                                min="01-01-2022" max="2022-12-31">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group card-label">
+                                                <label>Final date</label>
+                                                <input class="form-control" type="date" name="final_date" value="2022-07-22"
+                                                min="2022-01-01" max="2022-12-31">
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                  
+                                    <!-- Submit Section -->
+                                    <div class="submit-section mt-4">
+                                        <button type="submit" class="btn btn-primary submit-btn">Confirm and Booking</button>
+                                    </div>
+                                    <!-- /Submit Section -->
+                                    
+                                </div>
+                            </form>
+                            <!-- /Checkout Form -->
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="col-md-5 col-lg-4 theiaStickySidebar">
+                
+                    <!-- Booking Summary -->
+                    <div class="card booking-card">
+                        <div class="card-header">
+                            <h4 class="card-title">Booking Summary</h4>
+                        </div>
+                        <div class="card-body">
+                        
+                            <!-- Booking Doctor Info -->
+                            <div class="booking-doc-info">
+                                <a href="doctor-profile.html" class="booking-doc-img">
+                                    <img src="{{room.image.url}}" alt="User Image">
+                                </a>
+                                <div class="booking-info">
+                                    <h4><a href="doctor-profile.html">{{room.nome_hotel.name}}</a></h4>
+                                    <div class="rating">
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="d-inline-block average-rating">35</span>
+                                    </div>
+                                    <div class="clinic-details">
+                                        <p class="doc-location"><i class="fas fa-map-marker-alt mx-2"></i>{{room.nome_hotel.adress}} , {{room.nome_hotel.ville}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Booking Doctor Info -->
+                            
+                            <div class="booking-summary">
+                                <div class="booking-item-wrap">
+                                    <ul class="booking-date">
+                                        <li>room number <span>N-{{room.id}}</span></li>
+
+                                        <li>Price <span>{{room.prix}} DA</span></li>
+                                        <li>Availabe Now<span>
+                                            {% if room.disponibilité %}
+                                        <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-times text-danger" aria-hidden="true"></i>
+
+                                        {% endif %}
+                                        </span></li>
+                                    </ul>
+                                    <ul class="booking-fee">
+                                        <li>Phone number <span>{{room.phone_number}}</span></li>
+
+                                    </ul>
+                                    <div class="booking-total">
+                                        <ul class="booking-total-list">
+                                            <li>
+                                                <span>Total</span>
+                                                <span class="total-cost">{{room.prix}} DA </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Booking Summary -->
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>		
+    <!-- /Page Content -->
+
+
+{% endblock content %}
