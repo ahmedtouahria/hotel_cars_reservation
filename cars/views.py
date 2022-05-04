@@ -7,7 +7,7 @@ def cars(request):
     if 'mark' in request.GET:
         name=request.GET['name']
         mark=request.GET['mark']
-        cars=Car.objects.filter(Q(type_car__icontains=name) | Q(mark__icontains=mark) )
+        cars=Car.objects.filter(Q(type_car__icontains=name) & Q(mark__icontains=mark) )
     else:
         cars=Car.objects.all()
     context={
