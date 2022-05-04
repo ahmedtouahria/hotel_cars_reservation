@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.contrib import messages
-
+from django.db.models import  Q
 # Create your views here.
 def index(request):
     context={
@@ -10,8 +10,15 @@ def index(request):
     return render(request,"hotel/pages/index.html",context)
 
 def rooms(request):
+    if 'type' in request.GET:
+        type=request.GET['type']
+        name=request.GET['name']
+        hotel=Hotel.objects.filter(name__icontains=name).first()
+        rooms=Chambre.objects.filter(Q(type_chambre__icontains=type) & Q(nome_hotel=hotel) )
+    else:
+        rooms=Chambre.objects.all()
     context={
-        "rooms":Chambre.objects.all()
+        "rooms":rooms
         
     }
     return render(request,"hotel/pages/rooms.html",context)
