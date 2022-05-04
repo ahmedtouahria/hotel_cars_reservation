@@ -2,10 +2,12 @@ from django.shortcuts import render
 from .models import *
 from django.contrib import messages
 from django.db.models import  Q
+from cars.models import Car
 # Create your views here.
 def index(request):
     context={
-        "rooms":Chambre.objects.all()
+        "rooms":Chambre.objects.all(),
+        "cars":Car.objects.all(),
     }
     return render(request,"hotel/pages/index.html",context)
 
@@ -38,8 +40,6 @@ def reserve(request,pk):
             facture.save()
             
             messages.add_message(request, messages.INFO, 'Booking room successfully ! ')
-            
-
     context={
         "room":room,
     }

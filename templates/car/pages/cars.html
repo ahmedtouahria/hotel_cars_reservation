@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- Page Content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+                
+                    <!-- Search Filter -->
+                <form method="get" action="{% url 'cars' %}">
+                    <div class="card search-filter">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Search Filter</h4>
+                        </div>
+                        <div class="card-body">
+                        <div class="filter-widget">
+                                <input type="text" name="name" class="form-control " placeholder="Model or car Name">
+                        </div>
+                        <div class="filter-widget">
+                            <h4>Type</h4>
+                            <input type="text" name="mark" class="form-control " placeholder="Mark">
+                              
+                        </div>
+                        {% comment %} 
+                        <div class="filter-widget">
+                            <h4>Select Specialist</h4>
+                            <div>
+                                <label class="custom_check">
+                                    <input type="checkbox" name="select_specialist" checked>
+                                    <span class="checkmark"></span> Urology
+                                </label>
+                            </div>
+                            <div>
+                                <label class="custom_check">
+                                    <input type="checkbox" name="select_specialist" checked>
+                                    <span class="checkmark"></span> Neurology
+                                </label>
+                            </div>
+                            <div>
+                                <label class="custom_check">
+                                    <input type="checkbox" name="select_specialist">
+                                    <span class="checkmark"></span> Dentist
+                                </label>
+                            </div>
+                            <div>
+                                <label class="custom_check">
+                                    <input type="checkbox" name="select_specialist">
+                                    <span class="checkmark"></span> Orthopedic
+                                </label>
+                            </div>
+                            <div>
+                                <label class="custom_check">
+                                    <input type="checkbox" name="select_specialist">
+                                    <span class="checkmark"></span> Cardiologist
+                                </label>
+                            </div>
+                            <div>
+                                <label class="custom_check">
+                                    <input type="checkbox" name="select_specialist">
+                                    <span class="checkmark"></span> Cardiologist
+                                </label>
+                            </div>
+                        </div> 
+                        {% endcomment %}
+                            <div class="btn-search">
+                                <button type="submit" class="btn btn-block">Search</button>
+                            </div>	
+                        </div>
+                    </div>
+                </form>
+                    <!-- /Search Filter -->
+                </div>
+                
+                <div class="col-md-12 col-lg-8 col-xl-9">
+
+                    <!-- car Card -->
+                    {% for car in cars %}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="doctor-widget">
+                                <div class="doc-info-left">
+                                    <div class="doctor-img">
+                                        <a href="{% url 'car' car.id %}">
+                                            <img src="{{car.image.url}}" class="img-fluid" alt="User Image">
+                                        </a>
+                                    </div>
+                                    <div class="doc-info-cont">
+                                        <h4 class="doc-name"><a href="{% url 'car' car.id %}">{{car.mark}}</a></h4>
+                                        <p class="doc-speciality">Type : {{car.type_car}}</p>
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="d-inline-block average-rating">(17)</span>
+                                        </div>
+                                        <div class="clinic-details">
+                                            <p class="doc-location"><i class="fas fa-fire text-info"></i> {{car.puissance}}</p>
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doc-info-right">
+                                    <div class="clini-infos">
+                                        <ul>
+                                            <li><i class="fas fa-map-marker-alt"></i> {{car.adress}}</li>
+                                            <li><i class="far fa-money-bill-alt"></i> {{car.prix}} DA<i class="fas fa-info-circle mx-1" data-toggle="tooltip" title="Lorem Ipsum"></i> </li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="clinic-booking">
+                                        <a class="view-pro-btn" href="#">View Profile</a>
+                                        <a class="apt-btn" href="{% url 'book_hotel' car.id %}">Book </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /car Card -->
+                    {% endfor %}
+                    <div class="load-more text-center">
+                        <a class="btn btn-primary btn-sm" href="javascript:void(0);">Load More</a>	
+                    </div>	
+                </div>
+            </div>
+
+        </div>
+
+    </div>		
+    <!-- /Page Content -->
+
+
+{% endblock content %}
