@@ -8,13 +8,13 @@
                     <span></span>
                 </span>
             </a>
-            <a href="index-2.html" class="navbar-brand logo">
+            <a href="{% url 'index' %}" class="navbar-brand logo">
                 <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
             </a>
         </div>
         <div class="main-menu-wrapper">
             <div class="menu-header">
-                <a href="index-2.html" class="menu-logo">
+                <a href="{% url 'index' %}" class="menu-logo">
                     <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
                 </a>
                 <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -35,16 +35,15 @@
                 <li class="has-submenu">
                     <a href="{% url 'cars' %}">Cars <i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
-                        <li><a href="#">Cars</a></li>
+                        <li><a href="{% url 'cars' %}">Cars</a></li>
                         <li><a href="video-call.html">booking</a></li>
                     </ul>
                 </li>	
                 <li class="has-submenu">
-                    <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
+                    <a href="{% url 'activitys' %}">activity <i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
-                        <li><a href="voice-call.html">Voice Call</a></li>
-                        <li><a href="video-call.html">Video Call</a></li>
-                        <li><a href="search.html">Search Doctors</a></li>
+                        <li><a href="{% url 'activitys' %}">Activity</a></li>
+                        <li><a href="video-call.html">booking</a></li>
                     </ul>
                 </li>
                 {% if user.is_superuser %}

@@ -6,5 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('hotel.urls')),
     path('',include('cars.urls')),
+    path('',include('activity.urls')),
+    
     
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

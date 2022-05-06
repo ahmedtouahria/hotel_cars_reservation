@@ -33,6 +33,7 @@ def car(request,pk):
             username=request.POST['f_name']+request.POST['l_name']
             email=request.POST['email']
             client=User(username=username,email=email,password="12345678")    
+            client.save()
             reserve=ReservationCar(client=client,car=car,Date_debut=start_date,Date_fin=final_date)
             reserve.save()
             facture=FactureCar(reservation=reserve,montant=car.prix)

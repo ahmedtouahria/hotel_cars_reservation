@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from activity.models import Activity
 from .models import *
 from django.contrib import messages
 from django.db.models import  Q
@@ -8,6 +10,8 @@ def index(request):
     context={
         "rooms":Chambre.objects.all(),
         "cars":Car.objects.all(),
+        "activitys":Activity.objects.all(),
+        
     }
     return render(request,"hotel/pages/index.html",context)
 
