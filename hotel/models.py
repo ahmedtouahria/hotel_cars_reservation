@@ -15,16 +15,14 @@ class Hotel(models.Model):
 class Chambre(models.Model):
     VAR_TYPE = (('1', '1'), ('2', '2'), ('Family', 'Family'),)
     nome_hotel=models.ForeignKey(Hotel,on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=10,validators=[phone_regex],)
+    phone_number = models.CharField(max_length=14,validators=[phone_regex],)
     type_chambre=models.CharField(choices=VAR_TYPE,max_length=12)
     prix = models.IntegerField(default=0)
     image = models.ImageField(upload_to='media/pics')
     disponibilité = models.BooleanField(default=True)
     def __str__(self):
         return f'chambre N-{self.id}'
-class ImageChambre(models.Model):
-    chambre=models.ForeignKey(Chambre,on_delete=models.CASCADE)
-    image=models.ImageField(upload_to='media/chambre')
+    
 class Reservation(models.Model):
     client=models.ForeignKey(User,on_delete=models.CASCADE,related_name="reserve")
     chambre=models.ForeignKey(Chambre,on_delete=models.CASCADE,related_name="chambre_reserve")

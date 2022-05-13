@@ -16,10 +16,13 @@ def index(request):
     return render(request,"hotel/pages/index.html",context)
 
 def rooms(request):
-    if 'type' in request.GET:
-        type=request.GET['type']
-        name=request.GET['name']
-        hotel=Hotel.objects.filter(name__icontains=name).first()
+    if 'address' in request.GET:
+        try:
+            type=request.GET['type']
+        except:
+            type=""    
+        address=request.GET['address']
+        hotel=Hotel.objects.filter(adress__icontains=address).first()
         rooms=Chambre.objects.filter(Q(type_chambre__icontains=type) & Q(nome_hotel=hotel) )
     else:
         rooms=Chambre.objects.all()

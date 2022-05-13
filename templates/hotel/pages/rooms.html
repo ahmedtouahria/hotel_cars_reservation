@@ -16,16 +16,20 @@
                         </div>
                         <div class="card-body">
                         <div class="filter-widget">
-                                <input type="text" name="name" class="form-control " placeholder="Hotel Name">
+                                <input type="text" name="address" class="form-control " placeholder="Wilaya">
                         </div>
                         <div class="filter-widget">
                             <h4>Type</h4>
                                 <select name="type" class="custom-select custom-select mb-3" aria-label="Default select example">
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
+                                    <option value="1">One Person</option>
+                                    <option value="2">Two Persons</option>
                                     <option value="Family">Family</option>
                                   </select>
                         </div>
+                        <label class="custom_check">
+                            <input type="checkbox" name="disponible" checked>
+                            <span class="checkmark"></span> Disponible
+                        </label>
                         {% comment %} 
                         <div class="filter-widget">
                             <h4>Select Specialist</h4>
@@ -85,12 +89,12 @@
                             <div class="doctor-widget">
                                 <div class="doc-info-left">
                                     <div class="doctor-img">
-                                        <a href="doctor-profile.html">
+                                        <a href="{% url 'book_hotel' room.id %}">
                                             <img src="{{room.image.url}}" class="img-fluid" alt="User Image">
                                         </a>
                                     </div>
                                     <div class="doc-info-cont">
-                                        <h4 class="doc-name"><a href="doctor-profile.html">{{room.nome_hotel.name}}</a></h4>
+                                        <h4 class="doc-name"><a href="{% url 'book_hotel' room.id %}">{{room.nome_hotel.name}}</a></h4>
                                         <p class="doc-speciality">Type : {{room.type_chambre}}</p>
                                         <div class="rating">
                                             <i class="fas fa-star filled"></i>
@@ -115,7 +119,6 @@
                                         </ul>
                                     </div>
                                     <div class="clinic-booking">
-                                        <a class="view-pro-btn" href="#">View Profile</a>
                                         <a class="apt-btn" href="{% url 'book_hotel' room.id %}">Book </a>
                                     </div>
                                 </div>

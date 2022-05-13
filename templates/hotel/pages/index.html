@@ -13,14 +13,14 @@
                  
                 <!-- Search -->
                 <div class="search-box">
-                    <form action="templateshub.net">
+                    <form method="get" action="{% url 'rooms' %}">
                         <div class="form-group search-location">
                             <input type="text" class="form-control" placeholder="Search Location">
                             <span class="form-text">Based on your Location</span>
                         </div>
                         <div class="form-group search-info">
-                            <input type="text" class="form-control" placeholder="Search hotels, cars,.. Etc">
-                            <span class="form-text">Ex : Alger ,hotels,</span>
+                            <input name="address" type="text" class="form-control" placeholder="Search hotels, Etc">
+                            <span class="form-text">Ex : alger</span>
                         </div>
                         <button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
                     </form>
@@ -102,7 +102,7 @@
                 <div class="col-lg-8">
                     <div class="doctor-slider slider">
                     {% for room in rooms %}
-                        <!-- Room Item -->
+                    <!-- Room Item -->
                         <div class="profile-widget">
                             <div class="doc-img">
                                 <a href="{% url 'book_hotel' room.id %}">
@@ -139,9 +139,7 @@
                                     </li>
                                 </ul>
                                 <div class="row row-sm">
-                                    <div class="col-6">
-                                        <a href="doctor-profile.html" class="btn view-btn">View Profile</a>
-                                    </div>
+                                   
                                     <div class="col-6">
                                         <a href="{% url 'book_hotel' room.id %}" class="btn book-btn">Book Now</a>
                                     </div>
@@ -213,9 +211,7 @@
                                     </li>
                                 </ul>
                                 <div class="row row-sm">
-                                    <div class="col-6">
-                                        <a href="doctor-profile.html" class="btn view-btn">View Profile</a>
-                                    </div>
+                                   
                                     <div class="col-6">
                                         <a href="{% url 'car' car.id %}" class="btn book-btn">Book Now</a>
                                     </div>
@@ -286,9 +282,7 @@
                                     </li>
                                 </ul>
                                 <div class="row row-sm">
-                                    <div class="col-6">
-                                        <a href="doctor-profile.html" class="btn view-btn">View Profile</a>
-                                    </div>
+                                   
                                     <div class="col-6">
                                         <a href="{% url 'activity' activity.id %}" class="btn book-btn">Book Now</a>
                                     </div>

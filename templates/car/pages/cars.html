@@ -16,12 +16,18 @@
                         </div>
                         <div class="card-body">
                         <div class="filter-widget">
-                                <input type="text" name="name" class="form-control " placeholder="Model or car Name">
+                                <input type="text" name="address" class="form-control " placeholder="Address (wilaya,..)">
                         </div>
                         <div class="filter-widget">
-                            <h4>Type</h4>
+                            <h4>Mark</h4>
                             <input type="text" name="mark" class="form-control " placeholder="Mark">
                               
+                        </div>
+                        <div>
+                            <label class="custom_check">
+                                <input type="checkbox" name="select_specialist" checked>
+                                <span class="checkmark"></span> Disponible
+                            </label>
                         </div>
                         {% comment %} 
                         <div class="filter-widget">
@@ -106,13 +112,13 @@
                                 <div class="doc-info-right">
                                     <div class="clini-infos">
                                         <ul>
-                                            <li><i class="fas fa-map-marker-alt"></i> {{car.adress}}</li>
+                                            <li><i class="fas fa-map-marker-alt"></i> {{car.address}}</li>
                                             <li><i class="far fa-money-bill-alt"></i> {{car.prix}} DA<i class="fas fa-info-circle mx-1" data-toggle="tooltip" title="Lorem Ipsum"></i> </li>
                                             
                                         </ul>
                                     </div>
                                     <div class="clinic-booking">
-                                        <a class="view-pro-btn" href="#">View Profile</a>
+                                        
                                         <a class="apt-btn" href="{% url 'car' car.id %}">Book </a>
                                     </div>
                                 </div>
