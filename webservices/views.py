@@ -1,5 +1,3 @@
-
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import *
 from hotel.models import Hotel
@@ -9,8 +7,8 @@ from rest_framework import generics
 
 
 class HotelList(generics.ListCreateAPIView):
-    queryset = Hotel.objects.all()
-    serializer_class = HotelSerializer
+    queryset = Hotel.objects.all() # display objects
+    serializer_class = HotelSerializer #python --> json
     def post(self, request, *args, **kwargs):
         return Response({"cannot create hotel"})
 class CarList(generics.ListCreateAPIView):
